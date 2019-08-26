@@ -13,7 +13,8 @@ You can also head over to the [Releases page](https://github.com/MyHush/SilentDr
 
 ### Run SilentDragon
 
-In order to let your Android phone connect to your desktop, you need to run the deskop [SilentDragon](https://github.com/MyHush/SilentDragon), and sync a full zcash node.
+In order to let your Android phone connect to your desktop, you need to run the deskop [SilentDragon](https://github.com/MyHush/SilentDragon), and sync fully.
+
 Thankfully this should only take a few minutes with a fast internet connection! As the Hush network grows, it will take longer.
 
 After your node is synced, go to `Apps -> Connect Mobile App` to view the connection QR Code, which you can scan from the Android App.
