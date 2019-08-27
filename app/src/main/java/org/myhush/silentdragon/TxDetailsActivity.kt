@@ -103,9 +103,9 @@ class TxDetailsActivity : AppCompatActivity() {
 
     private fun viewOnExplorer(txid: String?) {
         val uri = if (DataModel.isTestnet()) {
-            "https://explorer.testnet.z.cash/tx/"
+            "https://explorer.myhush.org/tx/"
         } else {
-            "https://explorer.zcha.in/transactions/"
+            "https://explorer.myhush.org/tx/"
         } + txid
         val browserIntent = Intent(
             Intent.ACTION_VIEW,
