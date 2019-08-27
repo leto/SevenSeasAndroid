@@ -1,4 +1,4 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -17,7 +17,6 @@ import android.support.constraint.ConstraintLayout
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-
 
 class TxDetailsActivity : AppCompatActivity() {
 
@@ -93,7 +92,10 @@ class TxDetailsActivity : AppCompatActivity() {
 
         val lastPost = memo.trim().lastIndexOfAny("\r\n".toCharArray())
         val lastWord = memo.substring(lastPost + 1)
-        return if (DataModel.isValidAddress(lastWord) && DataModel.isSaplingAddress(lastWord))
+        return if (DataModel.isValidAddress(lastWord) && DataModel.isSaplingAddress(
+                lastWord
+            )
+        )
             lastWord
         else
             null

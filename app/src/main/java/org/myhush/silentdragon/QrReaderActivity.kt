@@ -1,4 +1,4 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon
 
 import android.app.Activity
 import android.content.Intent
@@ -19,13 +19,9 @@ import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import kotlinx.android.synthetic.main.activity_qr_reader.*
 import java.io.IOException
-import android.R.string.cancel
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.text.InputType
 import android.widget.EditText
-
-
 
 class QrReaderActivity : AppCompatActivity() {
 

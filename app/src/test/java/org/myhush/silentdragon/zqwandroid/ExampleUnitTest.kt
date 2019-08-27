@@ -1,4 +1,4 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon.zqwandroid
 
 import org.junit.Test
 

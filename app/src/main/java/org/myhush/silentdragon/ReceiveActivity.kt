@@ -1,4 +1,4 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon
 
 import android.content.ClipData
 import android.content.ClipboardManager

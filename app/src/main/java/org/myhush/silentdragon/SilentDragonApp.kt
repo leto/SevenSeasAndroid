@@ -1,13 +1,13 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon
 
 import android.app.Application
 import android.content.Context
 
-class ZQWApp : Application() {
+class SilentDragonApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        ZQWApp.appContext = applicationContext
+        appContext = applicationContext
     }
 
     companion object {

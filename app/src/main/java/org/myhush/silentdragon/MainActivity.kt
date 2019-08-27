@@ -1,4 +1,4 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -19,15 +19,17 @@ import android.widget.Button
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
-import com.adityapk.zcash.zqwandroid.DataModel.ConnectionStatus
-import com.adityapk.zcash.zqwandroid.DataModel.connStatus
+import org.myhush.silentdragon.DataModel.ConnectionStatus
+import org.myhush.silentdragon.DataModel.connStatus
 import com.beust.klaxon.Klaxon
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import java.text.DecimalFormat
 
 
-class MainActivity : AppCompatActivity(), TransactionItemFragment.OnFragmentInteractionListener , UnconfirmedTxItemFragment.OnFragmentInteractionListener{
+class MainActivity : AppCompatActivity(),
+    TransactionItemFragment.OnFragmentInteractionListener,
+    UnconfirmedTxItemFragment.OnFragmentInteractionListener {
     override fun onFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -47,8 +49,12 @@ class MainActivity : AppCompatActivity(), TransactionItemFragment.OnFragmentInte
 
         btnConnect.setOnClickListener {
             val intent = Intent(this, QrReaderActivity::class.java)
-            intent.putExtra("REQUEST_CODE", QrReaderActivity.REQUEST_CONNDATA)
-            startActivityForResult(intent, QrReaderActivity.REQUEST_CONNDATA)
+            intent.putExtra("REQUEST_CODE",
+                QrReaderActivity.REQUEST_CONNDATA
+            )
+            startActivityForResult(intent,
+                QrReaderActivity.REQUEST_CONNDATA
+            )
         }
 
         btnReconnect.setOnClickListener {
@@ -108,7 +114,7 @@ class MainActivity : AppCompatActivity(), TransactionItemFragment.OnFragmentInte
                     swiperefresh.isRefreshing = false
 
                     // Hide the reconnect button if there is no connection string
-                    if (DataModel.getConnString(ZQWApp.appContext!!).isNullOrBlank() ||
+                    if (DataModel.getConnString(SilentDragonApp.appContext!!).isNullOrBlank() ||
                         DataModel.getSecret() == null) {
                         btnReconnect.visibility = Button.GONE
                         lblConnectionOr.visibility = TextView.GONE
@@ -198,7 +204,10 @@ class MainActivity : AppCompatActivity(), TransactionItemFragment.OnFragmentInte
                 for (tx in unconfirmed) {
                     fragTx.add(
                         txList.id ,
-                        UnconfirmedTxItemFragment.newInstance(Klaxon().toJsonString(tx), ""),
+                        UnconfirmedTxItemFragment.newInstance(
+                            Klaxon().toJsonString(tx),
+                            ""
+                        ),
                         "tag1"
                     )
                 }
@@ -211,7 +220,10 @@ class MainActivity : AppCompatActivity(), TransactionItemFragment.OnFragmentInte
                 for (tx in confirmed) {
                     fragTx.add(
                         txList.id,
-                        TransactionItemFragment.newInstance(Klaxon().toJsonString(tx), oddeven),
+                        TransactionItemFragment.newInstance(
+                            Klaxon().toJsonString(tx),
+                            oddeven
+                        ),
                         "tag1"
                     )
                     oddeven = if (oddeven == "odd") "even" else "odd"
@@ -312,8 +324,13 @@ class MainActivity : AppCompatActivity(), TransactionItemFragment.OnFragmentInte
                     val allowInternetConnections = if (conComponents.size == 3) conComponents[2] == "1" else false
 
                     DataModel.setSecretHex(secretHex)
-                    DataModel.setConnString(conString, applicationContext)
-                    DataModel.setAllowInternet(allowInternetConnections)
+                    DataModel.setConnString(
+                        conString,
+                        applicationContext
+                    )
+                    DataModel.setAllowInternet(
+                        allowInternetConnections
+                    )
 
                     ConnectionManager.refreshAllData()
                 }

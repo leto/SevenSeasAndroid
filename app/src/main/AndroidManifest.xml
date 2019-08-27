@@ -1,74 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-          package="com.adityapk.zcash.zqwandroid">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.myhush.silentdragon">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-            tools:replace="android:allowBackup"
-            android:name="com.adityapk.zcash.zqwandroid.ZQWApp"
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            android:usesCleartextTraffic="true">
-        <activity
-                android:name=".SettingsActivity"
-                android:label="@string/title_activity_settings"
-                android:screenOrientation="portrait"
-                android:parentActivityName=".SendActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.adityapk.zcash.zqwandroid.SendActivity"/>
-        </activity>
-        <activity android:name=".QrReaderActivity"
-                  android:screenOrientation="portrait">
-        </activity>
-        <activity
-                android:name=".TxDetailsActivity"
-                android:label="@string/title_activity_tx_details"
-                android:screenOrientation="portrait"
-                android:parentActivityName=".MainActivity"
-                android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.adityapk.zcash.zqwandroid.MainActivity"/>
-        </activity>
-        <activity
-                android:name=".MainActivity"
-                android:label="@string/app_name"
-                android:launchMode="singleTop"
-                android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+        android:name=".SilentDragonApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+        <activity
+            android:name="org.myhush.silentdragon.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="org.myhush.silentdragon.SendActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SendActivity" />
+        </activity>
+
+        <activity
+            android:name="org.myhush.silentdragon.QrReaderActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="org.myhush.silentdragon.TxDetailsActivity"
+            android:label="@string/title_activity_tx_details"
+            android:parentActivityName="org.myhush.silentdragon.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="org.myhush.silentdragon.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-                android:name=".ReceiveActivity"
-                android:label="@string/title_activity_receive"
-                android:parentActivityName=".MainActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar">
+            android:name="org.myhush.silentdragon.ReceiveActivity"
+            android:label="@string/title_activity_receive"
+            android:parentActivityName="org.myhush.silentdragon.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.adityapk.zcash.zqwandroid.MainActivity"/>
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity
-                android:name=".SendActivity"
-                android:label="@string/title_activity_send"
-                android:launchMode="singleTop"
-                android:parentActivityName=".MainActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar">
+            android:name="org.myhush.silentdragon.SendActivity"
+            android:label="@string/title_activity_send"
+            android:launchMode="singleTop"
+            android:parentActivityName="org.myhush.silentdragon.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.adityapk.zcash.zqwandroid.MainActivity"/>
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
     </application>
 
