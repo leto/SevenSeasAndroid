@@ -89,7 +89,7 @@
                         app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="8dp" android:textColor="@color/colorPrimary"/>
                 <TextView
-                        android:text="ZEC 2.1234"
+                        android:text="HUSH 2.1234"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" android:id="@+id/txtAmtZec"
                         app:layout_constraintStart_toStartOf="parent"

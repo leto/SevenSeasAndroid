@@ -95,9 +95,9 @@ class SendActivity : AppCompatActivity() {
                 }
 
                 if (usd == null || zprice == null)
-                    amountZEC.text = "${DataModel.mainResponseData?.tokenName} 0.0"
+                    amountHUSH.text = "${DataModel.mainResponseData?.tokenName} 0.0"
                 else
-                    amountZEC.text =
+                    amountHUSH.text =
                         "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(usd / zprice)
             }
         })
@@ -133,7 +133,7 @@ class SendActivity : AppCompatActivity() {
         }
 
         // Then if the amount is valid
-        val amt = amountZEC.text.toString()
+        val amt = amountHUSH.text.toString()
         val parsedAmt = amt.substring("${DataModel.mainResponseData?.tokenName} ".length, amt.length)
         if (parsedAmt.toDoubleOrNull() == 0.0 || parsedAmt.toDoubleOrNull() == null) {
             showErrorDialog("Invalid amount!")
@@ -185,7 +185,7 @@ class SendActivity : AppCompatActivity() {
 
     private fun doConfirm() {
         val toAddr = sendAddress.text.toString()
-        val amt = amountZEC.text.toString()
+        val amt = amountHUSH.text.toString()
         val parsedAmt = amt.substring("${DataModel.mainResponseData?.tokenName} ".length, amt.length)
         val memo = txtSendMemo.text.toString() + getReplyToAddressIfChecked(toAddr)
 
@@ -226,11 +226,11 @@ class SendActivity : AppCompatActivity() {
         }
 
         // Since there is a text-change listner on the USD field, we set the USD first, then override the
-        // ZEC field manually.
+        // HUSH field manually.
         val zprice = DataModel.mainResponseData?.zecprice ?: 0.0
         amountUSD.setText( (zprice * amt).format(2))
 
-        amountZEC.text =
+        amountHUSH.text =
                 "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(amt)
     }
 
@@ -244,9 +244,9 @@ class SendActivity : AppCompatActivity() {
         }
 
         if (amt == null || zprice == null)
-            amountZEC.text = "${DataModel.mainResponseData?.tokenName} 0.0"
+            amountHUSH.text = "${DataModel.mainResponseData?.tokenName} 0.0"
         else
-            amountZEC.text =
+            amountHUSH.text =
                 "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(amt)
 
     }

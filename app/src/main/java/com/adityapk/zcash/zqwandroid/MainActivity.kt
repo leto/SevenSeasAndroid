@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), TransactionItemFragment.OnFragmentInte
         }
 
         txtMainBalanceUSD.setOnClickListener {
-            Toast.makeText(applicationContext, "1 ZEC = $${DecimalFormat("#.##")
+            Toast.makeText(applicationContext, "1 HUSH = $${DecimalFormat("#.##")
                 .format(DataModel.mainResponseData?.zecprice)}", Toast.LENGTH_LONG).show()
         }
 

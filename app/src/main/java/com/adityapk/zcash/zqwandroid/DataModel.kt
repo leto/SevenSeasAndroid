@@ -23,7 +23,7 @@ object DataModel {
     var transactions : List<TransactionItem> ?= null
 
     fun isTestnet(): Boolean {
-        return mainResponseData?.tokenName != "ZEC"
+        return mainResponseData?.tokenName != "HUSH"
     }
 
     var ws : WebSocket? = null

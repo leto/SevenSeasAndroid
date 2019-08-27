@@ -69,7 +69,7 @@ object ConnectionManager {
             println("Connstatus = connecting")
 
             val client = OkHttpClient.Builder().connectTimeout(5, TimeUnit.SECONDS).build()
-            val request = Request.Builder().url("wss://wormhole.zecqtwallet.com:443").build()
+            val request = Request.Builder().url("wss://wormhole.myhush.org:443").build()
             //val request = Request.Builder().url("ws://192.168.5.187:7070").build()
             val listener = WebsocketClient(false)
 
