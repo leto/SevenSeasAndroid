@@ -170,7 +170,7 @@ class QrReaderActivity : AppCompatActivity() {
 
         if (code == REQUEST_ADDRESS &&
             !DataModel.isValidAddress(StringBuilder(barcodeInfo).toString()) &&
-            !barcodeInfo.startsWith("zcash:")) {
+            !barcodeInfo.startsWith("hush:")) {
             Log.i(TAG, "Not an address")
             var err = barcodeInfo
             if (err.length > 48) {
@@ -184,10 +184,10 @@ class QrReaderActivity : AppCompatActivity() {
         // The data seems valid, so return it.
         val data = Intent()
 
-        // Payment URIs are often formatted as "zcash:<addr>", but this casuses parsing problems.
-        // So change it to zcash://<addr>, so that it parses properly
-        if (barcodeInfo.startsWith("zcash:") && !barcodeInfo.startsWith("zcash://")) {
-            data.data = Uri.parse(barcodeInfo.replaceFirst("zcash:", "zcash://"))
+        // Payment URIs are often formatted as "hush:<addr>", but this casuses parsing problems.
+        // So change it to hush://<addr>, so that it parses properly
+        if (barcodeInfo.startsWith("hush:") && !barcodeInfo.startsWith("hush://")) {
+            data.data = Uri.parse(barcodeInfo.replaceFirst("hush:", "hush://"))
         } else {
             data.data = Uri.parse(barcodeInfo)
         }
