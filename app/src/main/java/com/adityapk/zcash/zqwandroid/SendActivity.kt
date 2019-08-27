@@ -4,13 +4,15 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.text.*
+import android.text.Editable
+import android.text.InputType
+import android.text.SpannableStringBuilder
+import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
@@ -220,7 +222,7 @@ class SendActivity : AppCompatActivity() {
         setAmount(amt / (DataModel.mainResponseData?.zecprice ?: 0.0))
     }
 
-    private fun setAmountZec(amt: Double?) {
+    private fun setAmountHush(amt: Double?) {
         if (amt == null) {
             return;
         }
@@ -265,7 +267,7 @@ class SendActivity : AppCompatActivity() {
                         amt = amt?.replace(",", ".")
 
                         if (amt != null) {
-                            setAmountZec(amt.toDoubleOrNull())
+                            setAmountHush(amt.toDoubleOrNull())
                         }
 
                         val memo = data.data?.getQueryParameter("memo")
