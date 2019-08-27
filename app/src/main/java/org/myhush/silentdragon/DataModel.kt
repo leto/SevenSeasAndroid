@@ -1,4 +1,4 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon
 
 import android.content.Context
 import android.util.Log
@@ -35,7 +35,8 @@ object DataModel {
         CONNECTED(3)
     }
 
-    var connStatus: ConnectionStatus = ConnectionStatus.DISCONNECTED
+    var connStatus: ConnectionStatus =
+        ConnectionStatus.DISCONNECTED
 
     fun clear() {
         mainResponseData = null
@@ -63,7 +64,11 @@ object DataModel {
 
         // Check if it has errored out
         if (json.containsKey("error")) {
-            return ParseResponse(false, "Couldn't connect: ${json["error"].toString()}", true)
+            return ParseResponse(
+                false,
+                "Couldn't connect: ${json["error"].toString()}",
+                true
+            )
         }
 
         if (json.containsKey("ping")) {
@@ -72,14 +77,25 @@ object DataModel {
 
         // Check if input string is encrypted
         if (json.containsKey("nonce")) {
-            val decrypted = decrypt(json["nonce"].toString(), json["payload"].toString())
+            val decrypted = decrypt(
+                json["nonce"].toString(),
+                json["payload"].toString()
+            )
             if (decrypted.startsWith("error")) {
-                return ParseResponse(false, "Encryption Error: $decrypted", true)
+                return ParseResponse(
+                    false,
+                    "Encryption Error: $decrypted",
+                    true
+                )
             }
             return parseDecryptedResponse(decrypted)
         } else {
             // The input is unrecognized
-            return ParseResponse(false, "Unknown message received, JSON was missing a 'nonce'", true)
+            return ParseResponse(
+                false,
+                "Unknown message received, JSON was missing a 'nonce'",
+                true
+            )
         }
     }
 
@@ -93,7 +109,11 @@ object DataModel {
                 mainResponseData = Klaxon().parse<MainResponse>(response)
 
                 // Call the next API call
-                ws?.send(encrypt(json { obj("command" to "getTransactions") }.toJsonString()))
+                ws?.send(
+                    encrypt(
+                        json { obj("command" to "getTransactions") }.toJsonString()
+                    )
+                )
                 return ParseResponse()
             }
             "getTransactions" -> {
@@ -105,7 +125,8 @@ object DataModel {
                         tx.string("memo") ?: "",
                         tx.string("address") ?: "",
                         tx.string("txid") ?: "",
-                        tx.long("confirmations") ?: 0)
+                        tx.long("confirmations") ?: 0
+                    )
                 }
                 return ParseResponse(true)
             }
@@ -115,11 +136,17 @@ object DataModel {
             }
             "sendTxSubmitted" -> {
                 val txid = json.string("txid")
-                return ParseResponse(false, "Tx submitted: $txid")
+                return ParseResponse(
+                    false,
+                    "Tx submitted: $txid"
+                )
             }
             "sendTxFailed" -> {
                 val err = json.string("err")
-                return ParseResponse(false, "Tx displayMsg: $err")
+                return ParseResponse(
+                    false,
+                    "Tx displayMsg: $err"
+                )
             }
             else -> {
                 Log.e(TAG, "Unknown command ${json.string("command")}")
@@ -148,7 +175,11 @@ object DataModel {
         )) }
 
         Log.w(TAG, payload.toJsonString(true))
-        ws?.send(encrypt(payload.toJsonString()))
+        ws?.send(
+            encrypt(
+                payload.toJsonString()
+            )
+        )
     }
 
     fun makeAPICalls() {
@@ -159,7 +190,11 @@ object DataModel {
             // We make only the first API call here. The subsequent ones are made in parseResponsegit (), when this
             // call returns a reply
             val phoneName = "${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}"
-            ws?.send(encrypt(json { obj("command" to "getInfo", "name" to phoneName) }.toJsonString()))
+            ws?.send(
+                encrypt(
+                    json { obj("command" to "getInfo", "name" to phoneName) }.toJsonString()
+                )
+            )
         }
     }
 
@@ -199,12 +234,14 @@ object DataModel {
 
         val noncebin = nonceHex.hexStringToByteArray(Sodium.crypto_secretbox_noncebytes())
 
-        val result = Sodium.crypto_secretbox_open_easy(decrypted, encbin, encsize, noncebin, getSecret())
+        val result = Sodium.crypto_secretbox_open_easy(decrypted, encbin, encsize, noncebin,
+            getSecret()
+        )
         if (result != 0) {
             return "error: Decryption Error"
         }
 
-        Log.i(this.TAG, "Decrypted to: ${String(decrypted).replace("\n", " ")}")
+        Log.i(TAG, "Decrypted to: ${String(decrypted).replace("\n", " ")}")
         updateRemoteNonce(nonceHex)
         return String(decrypted)
     }
@@ -226,7 +263,9 @@ object DataModel {
         // Increment nonce
         val localNonce = incAndGetLocalNonce()
 
-        val ret = Sodium.crypto_secretbox_easy(encrypted, msg, msg.size, localNonce, getSecret())
+        val ret = Sodium.crypto_secretbox_easy(encrypted, msg, msg.size, localNonce,
+            getSecret()
+        )
         if (ret != 0) {
             println("Encryption failed")
         }
@@ -241,7 +280,7 @@ object DataModel {
     }
 
     private fun checkRemoteNonce(remoteNonce: String): Boolean {
-        val settings = ZQWApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
         val prevNonceHex = settings.getString("remotenonce", "00".repeat(Sodium.crypto_secretbox_noncebytes()))!!
 
         // The problem is the nonces are hex encoded in little endian, but the BigDecimal contructor expects the nonces
@@ -252,14 +291,14 @@ object DataModel {
     }
 
     private fun updateRemoteNonce(remoteNonce: String) {
-        val settings = ZQWApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
         val editor = settings.edit()
         editor.putString("remotenonce", remoteNonce)
         editor.apply()
     }
 
     private fun incAndGetLocalNonce() : ByteArray {
-        val settings = ZQWApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
         val nonceHex = settings.getString("localnonce", "00".repeat(Sodium.crypto_secretbox_noncebytes()))
 
         val nonce = nonceHex!!.hexStringToByteArray(Sodium.crypto_secretbox_noncebytes())
@@ -278,7 +317,8 @@ object DataModel {
             return null
 
         val tobin1 = ByteArray(Sodium.crypto_hash_sha256_bytes())
-        Sodium.crypto_hash_sha256(tobin1, getSecret(), getSecret()!!.size)
+        Sodium.crypto_hash_sha256(tobin1,
+            getSecret(), getSecret()!!.size)
 
         val tobin2 = ByteArray(Sodium.crypto_hash_sha256_bytes())
         Sodium.crypto_hash_sha256(tobin2, tobin1, tobin1.size)
@@ -292,7 +332,7 @@ object DataModel {
             return
         }
 
-        val settings = ZQWApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
 
         val editor = settings.edit()
         editor.putString("secret", secretHex)
@@ -302,7 +342,7 @@ object DataModel {
     }
 
     fun getSecret() : ByteArray? {
-        val settings = ZQWApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
         val secretHex = settings.getString("secret", "")
 
         if (secretHex.isNullOrEmpty()) {
@@ -314,7 +354,7 @@ object DataModel {
 
 
     fun setGlobalAllowInternet(allow: Boolean) {
-        val settings = ZQWApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
 
         val editor = settings.edit()
         editor.putBoolean("globalallowinternet", allow)
@@ -322,12 +362,12 @@ object DataModel {
     }
 
     fun getGlobalAllowInternet(): Boolean {
-        val settings = ZQWApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
         return settings.getBoolean("globalallowinternet", true)
     }
 
     fun setAllowInternet(allow: Boolean) {
-        val settings = ZQWApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
 
         val editor = settings.edit()
         editor.putBoolean("allowinternet", allow)
@@ -335,7 +375,7 @@ object DataModel {
     }
 
     fun getAllowInternet(): Boolean {
-        val settings = ZQWApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
         return settings.getBoolean("allowinternet", false)
     }
 

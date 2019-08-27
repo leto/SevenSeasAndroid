@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="com.adityapk.zcash.zqwandroid.MainActivity">
+      tools:context="com.adityapk.zcash.zqwandroid.org.adityapk.zcash.zqwandroid.MainActivity">
     <item android:id="@+id/action_send"
           android:title="Send"
           android:orderInCategory="300"

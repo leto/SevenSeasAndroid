@@ -1,5 +1,6 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -26,16 +27,17 @@ private const val ARG_PARAM2 = "param2"
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [UnconfirmedTxItemFragment.OnFragmentInteractionListener] interface
+ * [TransactionItemFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [UnconfirmedTxItemFragment.newInstance] factory method to
+ * Use the [TransactionItemFragment.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
-class UnconfirmedTxItemFragment : Fragment() {
+class TransactionItemFragment : Fragment() {
+
     // TODO: Rename and change types of parameters
-    private var tx: DataModel.TransactionItem? = null
     private var param2: String? = null
+    private var tx: DataModel.TransactionItem? = null
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,26 +48,45 @@ class UnconfirmedTxItemFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_unconfirmed_tx_item, container, false)
+        val view = inflater.inflate(R.layout.fragment_transaction_item, container, false)
 
-        view.findViewById<ConstraintLayout>(R.id.layoutUnconfirmedItem).setOnClickListener { v ->
+        view.findViewById<ConstraintLayout>(R.id.outlineLayout).setOnClickListener { v ->
             val intent = Intent(activity, TxDetailsActivity::class.java)
             intent.putExtra("EXTRA_TXDETAILS", Klaxon().toJsonString(tx))
             startActivity(intent)
         }
 
-        val txt = view.findViewById<TextView>(R.id.txtUnconfirmedTx)
-        txt.text = (if (tx?.type == "send") "Sending" else "Receiving") +
-                    " ${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#0.00########").format(kotlin.math.abs(tx?.amount?.toDoubleOrNull() ?: 0.0))
+        val txt = view.findViewById<TextView>(R.id.txdate)
+        txt.text = DateFormat.getDateInstance().format(Date((tx?.datetime ?: 0 )* 1000))
 
+        val col = view.findViewById<ImageView>(R.id.typeColor)
+        val amt = view.findViewById<TextView>(R.id.txamt)
+        val amtzec = tx?.amount?.toDoubleOrNull() ?: 0.0
+        amt.text = DataModel.mainResponseData?.tokenName + " " +
+                    (if (tx?.type == "send") "" else "+") + DecimalFormat("#0.00########").format(amtzec)
+
+        if (tx?.type == "send") {
+            col.setImageResource(R.color.colorAccent)
+            amt.setTextColor(ContextCompat.getColor(view.context,
+                R.color.colorAccent
+            ))
+        } else {
+            col.setImageResource(R.color.colorPrimary)
+            amt.setTextColor(ContextCompat.getColor(view.context,
+                R.color.colorPrimary
+            ))
+        }
+
+        if (param2 == "odd")
+            view.findViewById<ConstraintLayout>(R.id.outlineLayout).background = null
         return view
     }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -104,12 +125,13 @@ class UnconfirmedTxItemFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment UnconfirmedTxItemFragment.
+         * @return A new instance of fragment TransactionItemFragment.
          */
         // TODO: Rename and change types and number of parameters
+        @SuppressLint("SetTextI18n")
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            UnconfirmedTxItemFragment().apply {
+            TransactionItemFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

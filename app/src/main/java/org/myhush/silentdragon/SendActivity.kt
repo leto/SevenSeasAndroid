@@ -1,4 +1,4 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -50,8 +50,12 @@ class SendActivity : AppCompatActivity() {
 
         imageButton.setOnClickListener { view ->
             val intent = Intent(this, QrReaderActivity::class.java)
-            intent.putExtra("REQUEST_CODE", QrReaderActivity.REQUEST_ADDRESS)
-            startActivityForResult(intent, QrReaderActivity.REQUEST_ADDRESS)
+            intent.putExtra("REQUEST_CODE",
+                QrReaderActivity.REQUEST_ADDRESS
+            )
+            startActivityForResult(intent,
+                QrReaderActivity.REQUEST_ADDRESS
+            )
         }
 
         sendAddress.addTextChangedListener(object : TextWatcher {
@@ -62,10 +66,14 @@ class SendActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (DataModel.isValidAddress(s.toString())) {
                     txtValidAddress.text = "\u2713 Valid address"
-                    txtValidAddress.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
+                    txtValidAddress.setTextColor(ContextCompat.getColor(applicationContext,
+                        R.color.colorPrimary
+                    ))
                 } else {
                     txtValidAddress.text = "Not a valid address"
-                    txtValidAddress.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorAccent))
+                    txtValidAddress.setTextColor(ContextCompat.getColor(applicationContext,
+                        R.color.colorAccent
+                    ))
                 }
 
                 if (s?.startsWith("t") == true) {
@@ -114,9 +122,13 @@ class SendActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 txtMemoSize.text = "${s?.length ?: 0} / 512"
                 if (s?.length ?: 0 > 512) {
-                    txtMemoSize.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorAccent))
+                    txtMemoSize.setTextColor(ContextCompat.getColor(applicationContext,
+                        R.color.colorAccent
+                    ))
                 } else {
-                    txtMemoSize.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
+                    txtMemoSize.setTextColor(ContextCompat.getColor(applicationContext,
+                        R.color.colorPrimary
+                    ))
                 }
             }
         })
@@ -192,8 +204,10 @@ class SendActivity : AppCompatActivity() {
         val memo = txtSendMemo.text.toString() + getReplyToAddressIfChecked(toAddr)
 
         val intent = Intent(this, TxDetailsActivity::class.java)
-        val tx = DataModel.TransactionItem("confirm", 0, parsedAmt, memo,
-            toAddr, "", 0)
+        val tx = DataModel.TransactionItem(
+            "confirm", 0, parsedAmt, memo,
+            toAddr, "", 0
+        )
         intent.putExtra("EXTRA_TXDETAILS", Klaxon().toJsonString(tx))
         startActivityForResult(intent, REQUEST_CONFIRM)
     }

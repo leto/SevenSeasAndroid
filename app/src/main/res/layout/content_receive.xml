@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_receive"
-        tools:context=".ReceiveActivity">
+        tools:context="org.myhush.silentdragon.ReceiveActivity">
 
     <ImageView
             android:layout_width="0dp"

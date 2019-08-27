@@ -1,4 +1,4 @@
-package com.adityapk.zcash.zqwandroid
+package org.myhush.silentdragon
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -32,7 +32,8 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     fun updateUI() {
-        txtSettingsConnString.text = DataModel.getConnString(ZQWApp.appContext!!) ?: "Not Connected"
+        txtSettingsConnString.text = DataModel.getConnString(SilentDragonApp.appContext!!)
+            ?: "Not Connected"
 
         chkDisallowInternet.isChecked = !DataModel.getGlobalAllowInternet()
 
