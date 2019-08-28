@@ -19,11 +19,11 @@ import android.widget.Button
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
-import org.myhush.silentdragon.DataModel.ConnectionStatus
-import org.myhush.silentdragon.DataModel.connStatus
 import com.beust.klaxon.Klaxon
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.myhush.silentdragon.DataModel.ConnectionStatus
+import org.myhush.silentdragon.DataModel.connStatus
 import java.text.DecimalFormat
 
 
@@ -104,7 +104,8 @@ class MainActivity : AppCompatActivity(),
         runOnUiThread {
             Log.i(TAG, "Updating UI $updateTxns")
 
-            bottomNav.menu.findItem(R.id.action_bal).isChecked = true
+            bottomNav.itemIconTintList = null
+            bottomNav.menu.findItem(R.id.action_bal)?.isChecked = true
             when (connStatus) {
                 ConnectionStatus.DISCONNECTED -> {
                     setMainStatus("No Connection")
