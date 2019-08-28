@@ -271,7 +271,7 @@ class SendActivity : AppCompatActivity() {
         when (requestCode) {
             QrReaderActivity.REQUEST_ADDRESS -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if (data?.scheme == "zcash") {
+                    if (data?.scheme == "hush") {
                         sendAddress.setText(data.data?.host ?: "", TextView.BufferType.EDITABLE)
 
                         var amt = data.data?.getQueryParameter("amt") ?:
