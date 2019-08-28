@@ -5,9 +5,9 @@
     <item android:id="@+id/action_send"
           android:title="Send"
           android:orderInCategory="300"
-          app:showAsAction="never" android:icon="@drawable/ic_send_icon"/>
-    <item android:title="Balance" android:id="@+id/action_bal" android:icon="@android:drawable/ic_dialog_dialer"
+          app:showAsAction="never" android:icon="@drawable/send_selector"/>
+    <item android:title="Balance" android:id="@+id/action_bal" android:icon="@drawable/balance_selector"
           android:orderInCategory="200"/>
-    <item android:title="Receive" android:id="@+id/action_recieve" android:icon="@android:drawable/stat_sys_download"
+    <item android:title="Receive" android:id="@+id/action_recieve" android:icon="@drawable/receive_selector"
           android:orderInCategory="100"/>
 </menu>
