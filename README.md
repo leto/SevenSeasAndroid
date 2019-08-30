@@ -27,3 +27,20 @@ If you're installing the APK directly, you'll need to allow `Install from untrus
 
 You can file issues in the [issues tab](https://github.com/MyHush/SilentDragonAndroid/issues).
 
+## Release Build Process
+
+In order to build you'll need to obtain the following files and place them in the main directory.
+* silent_dragon_keystore.jks
+* secrets.properties
+
+These files contain sensitive information and should not be committed to git.
+
+Before creating each build you should increment the version code & version name in the build.gradle file. These must be incremented for each release otherwise the Play Store will reject the build.
+
+To create a release build navigate to the project directory in terminal and run
+./gradlew clean assembleRelease
+
+This will produce an apk file in the following directory.
+SilentDragonAndroid/app/build/output/apk/release/app-release.apk
+
+This build can be directly uploaded to Google Play.
