@@ -41,16 +41,20 @@ The first time you create a release build you'll need to create two files. The r
 ### Creating a properties file
 Within the projects main directory create a file secrets.properties The contents of the file are below and filled in with the release keystore alias, key password, and store password from when you created the release keystore.
 
+```
 store_file_location=../silent_dragon_keystore.jks
 key_alias=<alias>
 key_password=<key_password>
 store_password=<store_password>
+```
 
 ### Building a release APK
+
 Before creating each build you should increment the version code & version name in the build.gradle file. These must be incremented for each release otherwise the Play Store will reject the build.
 
 To create a release build navigate to the project directory in terminal and run
-./gradlew clean assembleRelease
+
+`./gradlew clean assembleRelease`
 
 This will produce an apk file in the following directory.
 SilentDragonAndroid/app/build/output/apk/release/app-release.apk
