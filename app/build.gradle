@@ -2,19 +2,38 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+def secretsPropertiesFile = rootProject.file("secrets.properties")
+def secretProperties = new Properties()
+
+if (secretsPropertiesFile.exists()) {
+    secretProperties.load(new FileInputStream((secretsPropertiesFile)))
+}
+
 android {
     compileSdkVersion 28
+
     defaultConfig {
         applicationId "org.myhush.silentdragon"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 6
-        versionName "0.3.2"
+        versionCode 1
+        versionName "0.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
+    signingConfigs {
+        release {
+            storeFile file(secretProperties["store_file_location"])
+            keyAlias secretProperties["key_alias"]
+            keyPassword secretProperties["key_password"]
+            storePassword secretProperties["store_password"]
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
