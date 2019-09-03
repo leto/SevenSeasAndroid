@@ -27,6 +27,23 @@ If you're installing the APK directly, you'll need to allow `Install from untrus
 
 You can file issues in the [issues tab](https://github.com/MyHush/SilentDragonAndroid/issues).
 
+
+### Compiling from source
+
+On OS X:
+
+    brew doctor
+    brew install ant
+    brew install maven
+    brew install gradle
+    brew cask install android-sdk
+    brew cask install android-ndk
+
+    touch ~/.android/repositories.cfg
+    sdkmanager --update
+    sdkmanager "platform-tools" "platforms;android-28"
+
+
 ## Release Build Process
 
 The first time you create a release build you'll need to create two files. The release keystore is used for app signing and a properties file is used to store sensitive information about the keystore. These files should not be committed to git. Once you have both of these files you can create a release build for the Google Play Store.
