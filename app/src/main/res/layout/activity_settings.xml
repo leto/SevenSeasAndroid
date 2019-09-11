@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="org.myhush.silentdragon.SettingsActivity">
+        tools:context="org.pirate.sevenseas.SettingsActivity">
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtSettingsConnString" android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"/>
         <TextView
-                android:text="SilentDragon connection address"
+                android:text="SevenSeas connection address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView"
@@ -55,7 +55,7 @@
                 android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"/>
         <TextView
-                android:text="If checked, the app will only attempt a direct connection to SilentDragon, and not route traffic over the internet via the external helper service. Please see the FAQ for more details"
+                android:text="If checked, the app will only attempt a direct connection to SevenSeas, and not route traffic over the internet via the external helper service. Please see the FAQ for more details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView4" app:layout_constraintStart_toStartOf="parent"
@@ -78,15 +78,19 @@
                 android:id="@+id/lblServerVersion" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp" android:layout_marginTop="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/textView10"/>
+
         <TextView
-                android:text="SilentDragon server version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView10" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/lblVersionName" android:textStyle="bold"/>
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="SevenSeas server version"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblVersionName" />
         <TextView
-                android:text="SilentDragon android version"
+                android:text="SevenSeas android version"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView3" android:layout_marginTop="16dp"

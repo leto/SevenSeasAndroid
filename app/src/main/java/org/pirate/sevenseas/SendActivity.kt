@@ -1,4 +1,4 @@
-package org.myhush.silentdragon
+package org.pirate.sevenseas
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -97,6 +97,7 @@ class SendActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val usd = s.toString().toDoubleOrNull()
                 val zprice = DataModel.mainResponseData?.zecprice
+                //val zprice = 0.4
 
                 if (usd == null) {
                     txtSendCurrencySymbol.text = "" // Let the placeholder show the "$" sign
@@ -105,9 +106,9 @@ class SendActivity : AppCompatActivity() {
                 }
 
                 if (usd == null || zprice == null)
-                    amountHUSH.text = "${DataModel.mainResponseData?.tokenName} 0.0"
+                    amountARRR.text = "${DataModel.mainResponseData?.tokenName} 0.0"
                 else
-                    amountHUSH.text =
+                    amountARRR.text =
                         "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(usd / zprice)
             }
         })
@@ -147,7 +148,7 @@ class SendActivity : AppCompatActivity() {
         }
 
         // Then if the amount is valid
-        val amt = amountHUSH.text.toString()
+        val amt = amountARRR.text.toString()
         val parsedAmt = amt.substring("${DataModel.mainResponseData?.tokenName} ".length, amt.length)
         if (parsedAmt.toDoubleOrNull() == 0.0 || parsedAmt.toDoubleOrNull() == null) {
             showErrorDialog("Invalid amount!")
@@ -199,7 +200,7 @@ class SendActivity : AppCompatActivity() {
 
     private fun doConfirm() {
         val toAddr = sendAddress.text.toString()
-        val amt = amountHUSH.text.toString()
+        val amt = amountARRR.text.toString()
         val parsedAmt = amt.substring("${DataModel.mainResponseData?.tokenName} ".length, amt.length)
         val memo = txtSendMemo.text.toString() + getReplyToAddressIfChecked(toAddr)
 
@@ -236,17 +237,17 @@ class SendActivity : AppCompatActivity() {
         setAmount(amt / (DataModel.mainResponseData?.zecprice ?: 0.0))
     }
 
-    private fun setAmountHush(amt: Double?) {
+    private fun setAmountArrr(amt: Double?) {
         if (amt == null) {
             return;
         }
 
         // Since there is a text-change listner on the USD field, we set the USD first, then override the
-        // HUSH field manually.
+        // ARRR field manually.
         val zprice = DataModel.mainResponseData?.zecprice ?: 0.0
         amountUSD.setText( (zprice * amt).format(2))
 
-        amountHUSH.text =
+        amountARRR.text =
                 "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(amt)
     }
 
@@ -260,9 +261,9 @@ class SendActivity : AppCompatActivity() {
         }
 
         if (amt == null || zprice == null)
-            amountHUSH.text = "${DataModel.mainResponseData?.tokenName} 0.0"
+            amountARRR.text = "${DataModel.mainResponseData?.tokenName} 0.0"
         else
-            amountHUSH.text =
+            amountARRR.text =
                 "${DataModel.mainResponseData?.tokenName} " + DecimalFormat("#.########").format(amt)
 
     }
@@ -271,7 +272,7 @@ class SendActivity : AppCompatActivity() {
         when (requestCode) {
             QrReaderActivity.REQUEST_ADDRESS -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if (data?.scheme == "hush") {
+                    if (data?.scheme == "arrr") {
                         sendAddress.setText(data.data?.host ?: "", TextView.BufferType.EDITABLE)
 
                         var amt = data.data?.getQueryParameter("amt") ?:
@@ -281,7 +282,7 @@ class SendActivity : AppCompatActivity() {
                         amt = amt?.replace(",", ".")
 
                         if (amt != null) {
-                            setAmountHush(amt.toDoubleOrNull())
+                            setAmountArrr(amt.toDoubleOrNull())
                         }
 
                         val memo = data.data?.getQueryParameter("memo")

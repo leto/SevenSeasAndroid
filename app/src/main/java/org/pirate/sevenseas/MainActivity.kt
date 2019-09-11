@@ -1,4 +1,4 @@
-package org.myhush.silentdragon
+package org.pirate.sevenseas
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -22,8 +22,8 @@ import android.widget.Toast
 import com.beust.klaxon.Klaxon
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import org.myhush.silentdragon.DataModel.ConnectionStatus
-import org.myhush.silentdragon.DataModel.connStatus
+import org.pirate.sevenseas.DataModel.ConnectionStatus
+import org.pirate.sevenseas.DataModel.connStatus
 import java.text.DecimalFormat
 
 
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity(),
         }
 
         txtMainBalanceUSD.setOnClickListener {
-            Toast.makeText(applicationContext, "1 HUSH = $${DecimalFormat("#.##")
+            Toast.makeText(applicationContext, "1 ARRR = $${DecimalFormat("#.##")
                 .format(DataModel.mainResponseData?.zecprice)}", Toast.LENGTH_LONG).show()
         }
 
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity(),
                     swiperefresh.isRefreshing = false
 
                     // Hide the reconnect button if there is no connection string
-                    if (DataModel.getConnString(SilentDragonApp.appContext!!).isNullOrBlank() ||
+                    if (DataModel.getConnString(SevenSeasApp.appContext!!).isNullOrBlank() ||
                         DataModel.getSecret() == null) {
                         btnReconnect.visibility = Button.GONE
                         lblConnectionOr.visibility = TextView.GONE

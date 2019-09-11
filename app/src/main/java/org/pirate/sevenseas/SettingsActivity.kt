@@ -1,4 +1,4 @@
-package org.myhush.silentdragon
+package org.pirate.sevenseas
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -32,7 +32,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     fun updateUI() {
-        txtSettingsConnString.text = DataModel.getConnString(SilentDragonApp.appContext!!)
+        txtSettingsConnString.text = DataModel.getConnString(SevenSeasApp.appContext!!)
             ?: "Not Connected"
 
         chkDisallowInternet.isChecked = !DataModel.getGlobalAllowInternet()

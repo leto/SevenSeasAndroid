@@ -13,7 +13,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "org.myhush.silentdragon"
+        applicationId "org.pirate.sevenseas"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1

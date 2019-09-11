@@ -1,4 +1,4 @@
-package org.myhush.silentdragon
+package org.pirate.sevenseas
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -69,7 +69,8 @@ class ReceiveActivity : AppCompatActivity() {
 
         val addrTxt = findViewById<TextView>(R.id.addressTxt)
 
-        val numsplits = if (addr!!.length > 48) 8 else 4
+        //val numsplits = if (addr!!.length > 48) 8 else 4
+        val numsplits = 12
         val size = addr!!.length / numsplits
 
         var splitText = ""
@@ -81,7 +82,7 @@ class ReceiveActivity : AppCompatActivity() {
 
         addrTxt.setOnClickListener {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("Hush address", addr)
+            val clip = ClipData.newPlainText("Pirate address", addr)
             clipboard.primaryClip = clip
             Toast.makeText(applicationContext, "Copied address to clipboard", Toast.LENGTH_SHORT).show()
         }
@@ -89,13 +90,13 @@ class ReceiveActivity : AppCompatActivity() {
 
     fun setTAddr() {
         addr = DataModel.mainResponseData?.tAddress ?: ""
-        txtRcvAddrTitle.text = "Your Hush transparent address"
+        txtRcvAddrTitle.text = "Your Pirate transparent address"
         setAddr()
     }
 
     fun setZAddr() {
         addr = DataModel.mainResponseData?.saplingAddress ?: ""
-        txtRcvAddrTitle.text = "Your Hush sapling address"
+        txtRcvAddrTitle.text = "Your Pirate sapling address"
         setAddr()
     }
 

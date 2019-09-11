@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_tx_details"
-        tools:context="org.myhush.silentdragon.TxDetailsActivity">
+        tools:context="org.pirate.sevenseas.TxDetailsActivity">
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -88,16 +88,20 @@
                         android:layout_height="wrap_content" android:id="@+id/textView6"
                         app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="8dp" android:textColor="@color/colorPrimary"/>
+
                 <TextView
-                        android:text="HUSH 2.1234"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" android:id="@+id/txtAmtHush"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textSize="24sp"
-                        android:textAlignment="textEnd"
-                        app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
-                        app:layout_constraintBottom_toTopOf="@+id/txtAmtUSD" android:layout_marginEnd="8dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textView6"/>
+                    android:id="@+id/txtAmtHush"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="ARRR 42.777"
+                    android:textAlignment="textEnd"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toTopOf="@+id/txtAmtUSD"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
                 <TextView
                         android:text="$ 45.23"
                         android:layout_width="0dp"

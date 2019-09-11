@@ -1,9 +1,9 @@
-package org.myhush.silentdragon
+package org.pirate.sevenseas
 
 import android.app.Application
 import android.content.Context
 
-class SilentDragonApp : Application() {
+class SevenSeasApp : Application() {
 
     override fun onCreate() {
         super.onCreate()

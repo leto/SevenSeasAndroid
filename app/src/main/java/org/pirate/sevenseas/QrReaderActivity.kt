@@ -1,4 +1,4 @@
-package org.myhush.silentdragon
+package org.pirate.sevenseas
 
 import android.app.Activity
 import android.content.Intent
@@ -166,7 +166,7 @@ class QrReaderActivity : AppCompatActivity() {
 
         if (code == REQUEST_ADDRESS &&
             !DataModel.isValidAddress(StringBuilder(barcodeInfo).toString()) &&
-            !barcodeInfo.startsWith("hush:")) {
+            !barcodeInfo.startsWith("pirate:")) {
             Log.i(TAG, "Not an address")
             var err = barcodeInfo
             if (err.length > 48) {
@@ -180,10 +180,10 @@ class QrReaderActivity : AppCompatActivity() {
         // The data seems valid, so return it.
         val data = Intent()
 
-        // Payment URIs are often formatted as "hush:<addr>", but this casuses parsing problems.
-        // So change it to hush://<addr>, so that it parses properly
-        if (barcodeInfo.startsWith("hush:") && !barcodeInfo.startsWith("hush://")) {
-            data.data = Uri.parse(barcodeInfo.replaceFirst("hush:", "hush://"))
+        // Payment URIs are often formatted as "pirate:<addr>", but this casuses parsing problems.
+        // So change it to pirate://<addr>, so that it parses properly
+        if (barcodeInfo.startsWith("pirate:") && !barcodeInfo.startsWith("pirate://")) {
+            data.data = Uri.parse(barcodeInfo.replaceFirst("pirate:", "pirate://"))
         } else {
             data.data = Uri.parse(barcodeInfo)
         }

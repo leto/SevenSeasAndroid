@@ -1,21 +1,21 @@
-# SilentDragon Android - Android frontend for SilentDragon
+# SevenSeas Android - Android frontend for SevenSeas
 
-SilentDragon Android is an Android frontend for the desktop SilentDragon that lets you send and receive shielded payments from your mobile phone.
+SevenSeas Android is an Android frontend for the desktop SilentDragon that lets you send and receive shielded payments from your mobile phone.
 
 
 ## Google Play
 
-SOON
+SOON™
 
 ## Dev Download
 
-You can also head over to the [Releases page](https://github.com/MyHush/SilentDragonAndroid/releases) to download an APK.
+You can also head over to the [Releases page](https://github.com/PirateNetwork/SevenSeasAndroid/releases) to download an APK.
 
-### Run SilentDragon
+### Run SevenSeas
 
-In order to let your Android phone connect to your desktop, you need to run the deskop [SilentDragon](https://github.com/MyHush/SilentDragon), and sync fully.
+In order to let your Android phone connect to your desktop, you need to run the deskop [SevenSeas](https://github.com/PirateNetwork/SevenSeas), and sync fully.
 
-Thankfully this should only take a few minutes with a fast internet connection! As the Hush network grows, it will take longer.
+Grab yourself a coffee or a tea - it will take a few minutes if you're syncing from scratch.
 
 After your node is synced, go to `Apps -> Connect Mobile App` to view the connection QR Code, which you can scan from the Android App.
 
@@ -25,7 +25,7 @@ If you're installing the APK directly, you'll need to allow `Install from untrus
 
 ### Bugs???
 
-You can file issues in the [issues tab](https://github.com/MyHush/SilentDragonAndroid/issues).
+You can file issues in the [issues tab](https://github.com/PirateNetwork/SevenSeasAndroid/issues).
 
 
 ### Compiling from source
@@ -52,14 +52,14 @@ The first time you create a release build you'll need to create two files. The r
 * With Android Studio IDE open, on the system bar click Build -> Generate Signed Bundle/APK
 * Select the APK option instead of the Bundle option
 * On the next screen select app as the module and click "Create new"
-* Set the Key Store Name to silent_dragon_keystore.jks and the path to that of the project, create a password for the keystore path, a Key alias, and a key password. The store password and key password should be the same. Fill out some basic organization information and click Ok.
+* Set the Key Store Name to seven_seas_keystore.jks and the path to that of the project, create a password for the keystore path, a Key alias, and a key password. The store password and key password should be the same. Fill out some basic organization information and click Ok.
 * On the next screen make sure the build variant "release" is selected and click Finish.
 
 ### Creating a properties file
 Within the projects main directory create a file secrets.properties The contents of the file are below and filled in with the release keystore alias, key password, and store password from when you created the release keystore.
 
 ```
-store_file_location=../silent_dragon_keystore.jks
+store_file_location=../seven_seas_keystore.jks
 key_alias=<alias>
 key_password=<key_password>
 store_password=<store_password>
@@ -74,6 +74,6 @@ To create a release build navigate to the project directory in terminal and run
 `./gradlew clean assembleRelease`
 
 This will produce an apk file in the following directory.
-SilentDragonAndroid/app/build/output/apk/release/app-release.apk
+SevenSeasAndroid/app/build/output/apk/release/app-release.apk
 
 This build can be directly uploaded to Google Play.

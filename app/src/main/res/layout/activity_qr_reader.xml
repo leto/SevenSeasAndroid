@@ -6,8 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_qr_code_reader"
-        tools:context=".QrCodeReaderActivity" android:id="@+id/camPreview">
+        tools:showIn="@layout/activity_qr_reader"
+        tools:context=".QrReaderActivity" android:id="@+id/camPreview">
 
     <SurfaceView
             android:layout_width="0dp"

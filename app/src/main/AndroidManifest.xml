@@ -3,13 +3,13 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.myhush.silentdragon">
+    package="org.pirate.sevenseas">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".SilentDragonApp"
+        android:name=".SevenSeasApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,9 +21,9 @@
         tools:replace="android:allowBackup">
 
         <activity
-            android:name="org.myhush.silentdragon.SettingsActivity"
+            android:name="org.pirate.sevenseas.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="org.myhush.silentdragon.SendActivity"
+            android:parentActivityName="org.pirate.sevenseas.SendActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -31,12 +31,12 @@
         </activity>
 
         <activity
-            android:name="org.myhush.silentdragon.QrReaderActivity"
+            android:name="org.pirate.sevenseas.QrReaderActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="org.myhush.silentdragon.TxDetailsActivity"
+            android:name="org.pirate.sevenseas.TxDetailsActivity"
             android:label="@string/title_activity_tx_details"
-            android:parentActivityName="org.myhush.silentdragon.MainActivity"
+            android:parentActivityName="org.pirate.sevenseas.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -44,7 +44,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name="org.myhush.silentdragon.MainActivity"
+            android:name="org.pirate.sevenseas.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -56,9 +56,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.myhush.silentdragon.ReceiveActivity"
+            android:name="org.pirate.sevenseas.ReceiveActivity"
             android:label="@string/title_activity_receive"
-            android:parentActivityName="org.myhush.silentdragon.MainActivity"
+            android:parentActivityName="org.pirate.sevenseas.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -66,10 +66,10 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name="org.myhush.silentdragon.SendActivity"
+            android:name="org.pirate.sevenseas.SendActivity"
             android:label="@string/title_activity_send"
             android:launchMode="singleTop"
-            android:parentActivityName="org.myhush.silentdragon.MainActivity"
+            android:parentActivityName="org.pirate.sevenseas.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

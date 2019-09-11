@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_receive"
-        tools:context="org.myhush.silentdragon.ReceiveActivity">
+        tools:context="org.pirate.sevenseas.ReceiveActivity">
 
     <ImageView
             android:layout_width="0dp"
@@ -20,15 +20,15 @@
     <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="14"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:id="@+id/addressTxt"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:text="abcde fghij" android:textAlignment="center"
-            android:textSize="24sp" android:fontFamily="monospace" android:layout_marginTop="8dp"
+            android:textSize="20sp" android:fontFamily="monospace" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/txtRcvAddrTitle" app:layout_constraintVertical_bias="0.0"/>
     <TextView
-            android:text="Your Hush Sapling Address"
+            android:text="Your Pirate Sapling Address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
@@ -45,10 +45,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="zAddr"/>
-        <android.support.design.widget.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="tAddr"/>
 
     </android.support.design.widget.TabLayout>
 </android.support.constraint.ConstraintLayout>

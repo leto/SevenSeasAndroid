@@ -4,7 +4,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="wrap_content"
-                                             tools:context="org.myhush.silentdragon.TransactionItemFragment" android:id="@+id/outlineLayout"
+                                             tools:context="org.pirate.sevenseas.TransactionItemFragment" android:id="@+id/outlineLayout"
                                              android:background="@color/light_grey">
 
     <!-- TODO: Update blank fragment layout -->

@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_main"
-        tools:context="org.myhush.silentdragon.MainActivity">
+        tools:context="org.pirate.sevenseas.MainActivity">
 
     <ImageView
             android:layout_width="0dp"
@@ -25,15 +25,18 @@
             android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toTopOf="@+id/txtMainBalance" android:textColor="@color/light_grey"/>
+
     <TextView
-            android:text="HUSH 0.0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/txtMainBalance"
-            app:layout_constraintBottom_toTopOf="@+id/txtMainBalanceUSD"
-            android:textSize="30sp"
-            app:layout_constraintTop_toBottomOf="@+id/lblBalance" android:textColor="@android:color/white"/>
+        android:id="@+id/txtMainBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ARRR 0.0"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtMainBalanceUSD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblBalance" />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="21dp"
@@ -97,7 +100,7 @@
         <ImageView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@mipmap/ic_silent_dragon_round"
+                android:src="@mipmap/ic_seven_seas_round"
                 android:id="@+id/imageView5" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package org.myhush.silentdragon
+package org.pirate.sevenseas
 
 import android.content.Intent
 import android.util.Log
@@ -27,7 +27,7 @@ object ConnectionManager {
     // to None
     private fun makeConnection(directConn : Boolean = true) {
         val connString =
-            DataModel.getConnString(SilentDragonApp.appContext!!)
+            DataModel.getConnString(SevenSeasApp.appContext!!)
         if (connString.isNullOrBlank()) {
             // The user might have just disconnected, so make sure we are disconnected
 
@@ -72,7 +72,7 @@ object ConnectionManager {
             println("Connstatus = connecting")
 
             val client = OkHttpClient.Builder().connectTimeout(5, TimeUnit.SECONDS).build()
-            val request = Request.Builder().url("wss://wormhole.myhush.org:443").build()
+            val request = Request.Builder().url("wss://wormhole.pirate.black:443").build()
             //val request = Request.Builder().url("ws://192.168.5.187:7070").build()
             val listener = WebsocketClient(false)
 
@@ -88,14 +88,14 @@ object ConnectionManager {
         val i = Intent(DATA_SIGNAL)
         i.putExtra("action", "refresh")
         i.putExtra("finished", finished)
-        SilentDragonApp.appContext?.sendBroadcast(i)
+        SevenSeasApp.appContext?.sendBroadcast(i)
     }
 
     fun sendUpdateDataSignal(updateTxns: Boolean = false) {
         val i = Intent(DATA_SIGNAL)
         i.putExtra("action", "newdata")
         i.putExtra("updateTxns", updateTxns)
-        SilentDragonApp.appContext?.sendBroadcast(i)
+        SevenSeasApp.appContext?.sendBroadcast(i)
     }
 
     fun sendErrorSignal(msg: String? = null, doDisconnect: Boolean = false) {
@@ -103,7 +103,7 @@ object ConnectionManager {
         i.putExtra("action", "error")
         i.putExtra("msg", msg)
         i.putExtra("doDisconnect", doDisconnect)
-        SilentDragonApp.appContext?.sendBroadcast(i)
+        SevenSeasApp.appContext?.sendBroadcast(i)
     }
 
 

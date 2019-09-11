@@ -1,4 +1,4 @@
-package org.myhush.silentdragon
+package org.pirate.sevenseas
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -103,9 +103,9 @@ class TxDetailsActivity : AppCompatActivity() {
 
     private fun viewOnExplorer(txid: String?) {
         val uri = if (DataModel.isTestnet()) {
-            "https://explorer.myhush.org/tx/"
+            "https://explorer.pirate.black/tx/"
         } else {
-            "https://explorer.myhush.org/tx/"
+            "https://explorer.pirate.black/tx/"
         } + txid
         val browserIntent = Intent(
             Intent.ACTION_VIEW,

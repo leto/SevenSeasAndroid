@@ -1,4 +1,4 @@
-package org.myhush.silentdragon.zqwandroid
+package org.pirate.sevenseas.zqwandroid
 
 import org.junit.Test
 

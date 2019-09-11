@@ -1,4 +1,4 @@
-package org.myhush.silentdragon
+package org.pirate.sevenseas
 
 import android.content.Context
 import android.util.Log
@@ -23,7 +23,7 @@ object DataModel {
     var transactions : List<TransactionItem> ?= null
 
     fun isTestnet(): Boolean {
-        return mainResponseData?.tokenName != "HUSH"
+        return mainResponseData?.tokenName != "ARRR"
     }
 
     var ws : WebSocket? = null
@@ -280,7 +280,7 @@ object DataModel {
     }
 
     private fun checkRemoteNonce(remoteNonce: String): Boolean {
-        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SevenSeasApp.appContext!!.getSharedPreferences("Secret", 0)
         val prevNonceHex = settings.getString("remotenonce", "00".repeat(Sodium.crypto_secretbox_noncebytes()))!!
 
         // The problem is the nonces are hex encoded in little endian, but the BigDecimal contructor expects the nonces
@@ -291,14 +291,14 @@ object DataModel {
     }
 
     private fun updateRemoteNonce(remoteNonce: String) {
-        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SevenSeasApp.appContext!!.getSharedPreferences("Secret", 0)
         val editor = settings.edit()
         editor.putString("remotenonce", remoteNonce)
         editor.apply()
     }
 
     private fun incAndGetLocalNonce() : ByteArray {
-        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SevenSeasApp.appContext!!.getSharedPreferences("Secret", 0)
         val nonceHex = settings.getString("localnonce", "00".repeat(Sodium.crypto_secretbox_noncebytes()))
 
         val nonce = nonceHex!!.hexStringToByteArray(Sodium.crypto_secretbox_noncebytes())
@@ -332,7 +332,7 @@ object DataModel {
             return
         }
 
-        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SevenSeasApp.appContext!!.getSharedPreferences("Secret", 0)
 
         val editor = settings.edit()
         editor.putString("secret", secretHex)
@@ -342,7 +342,7 @@ object DataModel {
     }
 
     fun getSecret() : ByteArray? {
-        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SevenSeasApp.appContext!!.getSharedPreferences("Secret", 0)
         val secretHex = settings.getString("secret", "")
 
         if (secretHex.isNullOrEmpty()) {
@@ -354,7 +354,7 @@ object DataModel {
 
 
     fun setGlobalAllowInternet(allow: Boolean) {
-        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SevenSeasApp.appContext!!.getSharedPreferences("Secret", 0)
 
         val editor = settings.edit()
         editor.putBoolean("globalallowinternet", allow)
@@ -362,12 +362,12 @@ object DataModel {
     }
 
     fun getGlobalAllowInternet(): Boolean {
-        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SevenSeasApp.appContext!!.getSharedPreferences("Secret", 0)
         return settings.getBoolean("globalallowinternet", true)
     }
 
     fun setAllowInternet(allow: Boolean) {
-        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SevenSeasApp.appContext!!.getSharedPreferences("Secret", 0)
 
         val editor = settings.edit()
         editor.putBoolean("allowinternet", allow)
@@ -375,7 +375,7 @@ object DataModel {
     }
 
     fun getAllowInternet(): Boolean {
-        val settings = SilentDragonApp.appContext!!.getSharedPreferences("Secret", 0)
+        val settings = SevenSeasApp.appContext!!.getSharedPreferences("Secret", 0)
         return settings.getBoolean("allowinternet", false)
     }
 

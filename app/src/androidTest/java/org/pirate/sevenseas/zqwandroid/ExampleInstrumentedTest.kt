@@ -1,4 +1,4 @@
-package org.myhush.silentdragon.zqwandroid
+package org.pirate.sevenseas.zqwandroid
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("org.myhush.silentdragon", appContext.packageName)
+        assertEquals("org.pirate.sevenseas", appContext.packageName)
     }
 }

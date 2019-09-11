@@ -4,7 +4,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context="org.myhush.silentdragon.UnconfirmedTxItemFragment" android:id="@+id/frameLayout">
+                                             tools:context="org.pirate.sevenseas.UnconfirmedTxItemFragment" android:id="@+id/frameLayout">
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
@@ -22,13 +22,17 @@
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp" app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="8dp" android:progress="23"/>
+
         <TextView
-                android:text="Recieving HUSH 0.12345678"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/txtUnconfirmedTx"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp" android:layout_marginStart="24dp"
-                app:layout_constraintStart_toEndOf="@+id/prgUnconfirmed" android:textSize="18sp"/>
+            android:id="@+id/txtUnconfirmedTx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Recieving ARRR 0.12345678"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/prgUnconfirmed"
+            app:layout_constraintTop_toTopOf="parent" />
         <TextView
                 android:text="Unconfirmed Transaction"
                 android:layout_width="wrap_content"
