@@ -76,7 +76,7 @@ class SendActivity : AppCompatActivity() {
                     ))
                 }
 
-                if (s?.startsWith("t") == true) {
+                if (s?.startsWith("R") == true) {
                     txtSendMemo.isEnabled = false
                     chkIncludeReplyTo.isEnabled = false
                     txtSendMemo.text = SpannableStringBuilder("")
@@ -97,7 +97,6 @@ class SendActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val usd = s.toString().toDoubleOrNull()
                 val zprice = DataModel.mainResponseData?.zecprice
-                //val zprice = 0.4
 
                 if (usd == null) {
                     txtSendCurrencySymbol.text = "" // Let the placeholder show the "$" sign
